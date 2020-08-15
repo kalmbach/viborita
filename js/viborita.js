@@ -57,15 +57,19 @@ function draw() {
     snakeY = 0;
   }
 
+  // reset background
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // paint apple
+  ctx.fillStyle = 'red';
+  ctx.fillRect(appleX * tileSize, appleY * tileSize, tileSize, tileSize);
+
   if (snakeX === appleX && snakeY === appleY) {
     tailSize += 1;
     appleX = Math.floor(Math.random() * gridSize);
     appleY = Math.floor(Math.random() * gridSize);
   }
-
-  // reset background
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   // paint snake
   ctx.fillStyle = 'green';
@@ -81,10 +85,6 @@ function draw() {
       tailSize = defaultTailSize;
     }
   }
-
-  // paint apple
-  ctx.fillStyle = 'red';
-  ctx.fillRect(appleX * tileSize, appleY * tileSize, tileSize, tileSize);
 
   // set snake trail
   snakeTrail.push({ x: snakeX, y: snakeY });
