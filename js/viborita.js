@@ -32,6 +32,10 @@ function paintApple() {
   ctx.fillRect(appleX * tileSize, appleY * tileSize, tileSize, tileSize);
 }
 
+function paintScore() {
+  document.getElementById('score').innerText = score;
+}
+
 function paintSnake() {
   // paint snake
   ctx.fillStyle = 'purple';
@@ -53,8 +57,7 @@ function paintSnake() {
 
     if (snakeTrail[i].x === snakeX && snakeTrail[i].y === snakeY) {
       tailSize = defaultTailSize;
-      score = 0;
-      document.getElementById('score').innerText = score;
+      clearInterval(drawInterval);
     }
   }
 }
@@ -86,7 +89,7 @@ function draw() {
     appleX = Math.floor(Math.random() * gridSize);
     appleY = Math.floor(Math.random() * gridSize);
 
-    document.getElementById('score').innerText = score;
+    paintScore();
   }
 
   // set snake trail
