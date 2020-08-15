@@ -66,18 +66,10 @@ function draw() {
   snakeX += nextX;
   snakeY += nextY;
 
-  if (snakeX < 0) {
-    snakeX = gridSize - 1;
-  }
-  if (snakeX > gridSize - 1) {
-    snakeX = 0;
-  }
-  if (snakeY < 0) {
-    snakeY = gridSize - 1;
-  }
-  if (snakeY > gridSize - 1) {
-    snakeY = 0;
-  }
+  if (snakeX < 0) { snakeX = gridSize - 1; }
+  if (snakeX > gridSize - 1) { snakeX = 0; }
+  if (snakeY < 0) { snakeY = gridSize - 1; }
+  if (snakeY > gridSize - 1) { snakeY = 0; }
 
   paintBoard();
   paintApple();
@@ -101,25 +93,32 @@ function draw() {
 
 function keyDownEvent(e) {
   switch (e.keyCode) {
+    // Left
     case 37:
       nextX = -1;
       nextY = 0;
       break;
+
+    // Up
     case 38:
       nextX = 0;
       nextY = -1;
       break;
+
+    // Right
     case 39:
       nextX = 1;
       nextY = 0;
       break;
+
+    // Down
     case 40:
       nextX = 0;
       nextY = 1;
       break;
+
     default:
-      nextX = 0;
-      nextY = 0;
+      break;
   }
 
   if (!drawInterval) {
